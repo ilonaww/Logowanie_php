@@ -1,0 +1,31 @@
+@use "../custom" as *;
+
+.menu {
+  background: rgb(11, 3, 148);
+  background: linear-gradient(
+    90deg,
+    rgba(11, 3, 148, 1) 0%,
+    rgba(139, 6, 191, 1) 53%,
+    rgba(212, 49, 214, 1) 100%
+  );
+
+  &__items {
+    margin-right: 4rem;
+
+    &__item {
+      padding: 0 1rem;
+      a {
+        color: $white;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.nav-link.active {
+    color: $white !important;
+}
+
+.navbar-brand {
+    margin-left: 2rem;
+}

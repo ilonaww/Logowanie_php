@@ -1,0 +1,11 @@
+@use 'custom';
+
+@use 'section/nav.scss';
+
+//Zmiana czcionki 
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+:root {
+    --bs-font-sans-serif: 'Assistant', sans-serif;
+
+}
