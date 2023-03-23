@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
     
+    
 </head>
 <body>
 
@@ -21,7 +22,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav menu__items">
           <li class="nav-item menu__items__item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item menu__items__item">
             <a class="nav-link" href="#">O nas</a>
@@ -32,11 +33,13 @@
           <li class="nav-item menu__items__item">
             <a class="nav-link">Kontakt</a>
           </li>
+          <li class="nav-item menu__items__item">
+            <a class="nav-link" href="logowanie.php">Zaloguj się</a>
+          </li>
+          <li class="nav-item menu__items__item">
+            <a class="nav-link" href="rejestracja.php">Zarejestruj się</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-
-  <script src="/assets/js/bootstrap.bundle.js"></script>
-</body>
-</html>
