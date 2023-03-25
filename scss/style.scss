@@ -1,6 +1,8 @@
 @use 'custom';
 
 @use 'section/nav.scss';
+@use 'components/_heading.scss';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 //Zmiana czcionki 
 @import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');

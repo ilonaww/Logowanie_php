@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav menu__items">
           <li class="nav-item menu__items__item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item menu__items__item">
             <a class="nav-link" href="#">O nas</a>

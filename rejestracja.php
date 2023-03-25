@@ -3,7 +3,17 @@
 include_once 'section/header.php';
 
 ?>
-  <script src="/assets/js/bootstrap.bundle.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<div class="container">
+    <div class="heading-top">
+        <div class="mt-4 heading-top__center">
+            <h2 class="display-6">
+                <p class="mx-auto">Zarejestruj się</p>
+            </h2>
+        </div>
+    </div>
+</div>
+<?php
+
+include_once 'section/footer.php';
+
+?>
