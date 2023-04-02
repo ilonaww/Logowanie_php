@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    
+    <link rel="stylesheet" href="assets/css/style.css">   
 </head>
 <body>
 
@@ -37,7 +35,7 @@
             <a class="nav-link" href="logowanie.php">Zaloguj się</a>
           </li>
           <li class="nav-item menu__items__item">
-            <a class="nav-link" href="rejestracja.php">Zarejestruj się</a>
+            <a class="nav-link" href="signup.php">Zarejestruj się</a>
           </li>
         </ul>
       </div>

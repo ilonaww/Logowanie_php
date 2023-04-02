@@ -1,13 +1,4 @@
 @use 'custom';
-
-@use 'section/nav.scss';
-@use 'components/_heading.scss';
+@forward 'components';
+@forward 'section';
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
-//Zmiana czcionki 
-@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
-
-:root {
-    --bs-font-sans-serif: 'Assistant', sans-serif;
-
-}

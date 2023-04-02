@@ -1,8 +1,10 @@
+@use '../custom' as *;
+
 .heading-top {
     text-align: center;
-    // color: $blue;
+    color: $primary;
+}
 
-    &__center {
-        display: inline-block;
-    }
+.heading-top p {
+    font-weight: 500;
 }

@@ -1,0 +1,16 @@
+//import bootstrap
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+//Zmiana czcionki 
+:root {
+    --bs-font-sans-serif: 'Assistant', sans-serif;
+
+}
+
+//Kolory
+$primary: rgb(11, 3, 148) ;
+$white: #FFF;
+
+
