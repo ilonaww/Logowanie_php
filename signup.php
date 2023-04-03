@@ -1,8 +1,7 @@
 <?php
-
 include_once 'section/header.php';
-
 ?>
+
 <div class="container">
     <section class="signup">
         <div class="heading-top">
@@ -12,7 +11,7 @@ include_once 'section/header.php';
                 </h2>
             </div>
         </div>
-        <form action="rejestracjaSkp.php" method="post">
+        <form action="signupSkp.php" method="post">
             <div class="signup__form d-flex flex-column align-items-center">
                 <input class="signup__form__item form-control" type="text" name="imie" placeholder="Imię i nazwisko...">
                 <input class="signup__form__item form-control" type="text" name="mail" placeholder="E-mail...">
@@ -22,13 +21,9 @@ include_once 'section/header.php';
                 <input class="signup__form__item btn btn-outline-primary" type="submit" name="submit" value="Zarejestruj">
             </div>
         </form>
-
-
-
     </section>
 </div>
+
 <?php
-
 include_once 'section/footer.php';
-
 ?>

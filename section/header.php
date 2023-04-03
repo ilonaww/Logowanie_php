@@ -32,7 +32,7 @@
             <a class="nav-link">Kontakt</a>
           </li>
           <li class="nav-item menu__items__item">
-            <a class="nav-link" href="logowanie.php">Zaloguj się</a>
+            <a class="nav-link" href="login.php">Zaloguj się</a>
           </li>
           <li class="nav-item menu__items__item">
             <a class="nav-link" href="signup.php">Zarejestruj się</a>
