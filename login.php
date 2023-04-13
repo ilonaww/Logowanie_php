@@ -11,7 +11,7 @@ include_once 'section/header.php';
                 </h2>
             </div>
         </div>
-        <form action="loginSkp.php" method="post">
+        <form action="plikiPhp/loginSkp.php" method="post">
             <div class="signup__form d-flex flex-column align-items-center">
                 <input class="signup__form__item form-control" type="text" name="imie" placeholder="Nazwa użytkownika/E-mail">
                 <input class="signup__form__item form-control" type="password" name="haslo" placeholder="Hasło">
