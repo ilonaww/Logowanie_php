@@ -22,7 +22,34 @@ include_once 'section/header.php';
             </div>
         </form>
     </section>
+    <?php
+
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "emptyinput") {
+            echo '<p class="text-danger text-center fs-3 text">Wypełnij wszystkie pola</p>';
+
+        } elseif ($_GET["error"] == "invaliduid") {
+            echo '<p class="text-danger text-center fs-3 text">Błędna nazwa użytkownika</p>';
+
+        } elseif ($_GET["error"] == "invalidemail") {
+            echo '<p class="text-danger text-center fs-3 text">Niepoprawny adres e-mail</p>';
+
+        } elseif ($_GET["error"] == "pwddontmatch") {
+            echo '<p class="text-danger text-center fs-3 text">Nowe i powtórzone hasła muszą być takie same</p>';
+
+        } elseif ($_GET["error"] == "usernametaken") {
+            echo '<p class="text-danger text-center fs-3 text">Ta nazwa użytkownika lub e-mail są już zajęte</p>';
+            
+        } elseif ($_GET["error"] == "none") {
+            echo '<p class="text-success text-center fs-3 text">Udana rejsetracja</p>';
+        }
+    }
+
+
+    ?>
 </div>
+
+
 
 <?php
 include_once 'section/footer.php';

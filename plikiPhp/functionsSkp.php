@@ -9,6 +9,7 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat)
         $result = false;
     }
     return $result;
+    echo $result;
 }
 
 function invalidUid($username)
@@ -70,7 +71,7 @@ function uidExists($conn, $username, $email)
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $username, $pwd)
+function createUser($conn, $name, $username, $email, $pwd)
 {
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);

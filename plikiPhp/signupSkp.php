@@ -1,4 +1,10 @@
 <?php
+
+echo "jest";
+if(isset($_POST["submit"])) {
+    echo"przycisk";
+}
+
 if(isset($_POST["submit"])) {
     
     $name = $_POST["name"];
@@ -11,7 +17,7 @@ if(isset($_POST["submit"])) {
     require_once 'functionsSkp.php';
 
     if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false) {
-        header("locarion: ../signup.php?error=emptyinput");
+        header("location: ../signup.php?error=emptyinput");
         exit();
     }
 
@@ -30,7 +36,7 @@ if(isset($_POST["submit"])) {
         exit();
     }
 
-    if (uidExists($conn, $name, $email) !== false) {
+    if (uidExists($conn, $username, $email) !== false) {
         header("location: ../signup.php?error=usernametaken");
         exit();
     }
