@@ -42,7 +42,7 @@ session_start();
               <a class="nav-link" href="profile.php">Mój profil</a>
             </li>';
               echo '<li class="nav-item menu__items__item">
-              <a class="nav-link" href="logout.php">Wyloguj</a>
+              <a class="nav-link" href="plikiPhp/logoutSkp.php">Wyloguj</a>
             </li>';
             } else {
              echo '<li class="nav-item menu__items__item">
