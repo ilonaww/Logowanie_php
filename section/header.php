@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,12 +35,25 @@
           <li class="nav-item menu__items__item">
             <a class="nav-link">Kontakt</a>
           </li>
-          <li class="nav-item menu__items__item">
-            <a class="nav-link" href="login.php">Zaloguj się</a>
-          </li>
-          <li class="nav-item menu__items__item">
-            <a class="nav-link" href="signup.php">Zarejestruj się</a>
-          </li>
+
+          <?php
+            if(isset($_SESSION["useruid"])){
+              echo '<li class="nav-item menu__items__item">
+              <a class="nav-link" href="profile.php">Mój profil</a>
+            </li>';
+              echo '<li class="nav-item menu__items__item">
+              <a class="nav-link" href="logout.php">Wyloguj</a>
+            </li>';
+            } else {
+             echo '<li class="nav-item menu__items__item">
+              <a class="nav-link" href="login.php">Zaloguj się</a>
+            </li>';
+            echo '<li class="nav-item menu__items__item">
+              <a class="nav-link" href="signup.php">Zarejestruj się</a>
+            </li>';
+            }
+          ?>
+
         </ul>
       </div>
     </div>
