@@ -1,0 +1,19 @@
+.signin {
+    &__form {
+        &__item {
+            margin: 0.5rem;
+            width: 30rem !important;            
+        }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: center;  
+        margin-top: 1rem;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+  

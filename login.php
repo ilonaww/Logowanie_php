@@ -3,7 +3,7 @@ include_once 'section/header.php';
 ?>
 
 <div class="container">
-    <section class="signup">
+    <section class="signin">
         <div class="heading-top">
             <div class="mt-4 heading-top">
                 <h2 class="display-6">
@@ -13,12 +13,16 @@ include_once 'section/header.php';
         </div>
         <form action="plikiPhp/loginSkp.php" method="post">
             <div class="signup__form d-flex flex-column align-items-center">
-                <input class="signup__form__item form-control" type="text" name="uid" placeholder="Nazwa użytkownika/E-mail">
-                <input class="signup__form__item form-control" type="password" name="pwd" placeholder="Hasło">
-                <input class="signup__form__item btn btn-outline-primary" type="submit" name="submit" value="Zaloguj">
+                <input class="signin__form__item form-control" type="text" name="uid" placeholder="Nazwa użytkownika/E-mail">
+                <input class="signin__form__item form-control" type="password" name="pwd" placeholder="Hasło">
+                <input class="signin__form__item btn btn-outline-primary" type="submit" name="submit" value="Zaloguj">
             </div>
         </form>
+    <div class="signin__link">
+    <a href="resetpwd.php">Niepamiętam hasła</a>
+    </div>
 
+      
         <?php
 if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {

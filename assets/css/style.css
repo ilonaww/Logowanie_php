@@ -10807,6 +10807,19 @@ textarea.form-control-lg {
   width: 30rem !important;
 }
 
+.signin__form__item {
+  margin: 0.5rem;
+  width: 30rem !important;
+}
+.signin__link {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.signin__link a {
+  text-decoration: none;
+}
+
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
