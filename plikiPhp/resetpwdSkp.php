@@ -1,59 +1,92 @@
 <?php
+if (isset($_POST["resert-pwd-submit"])) {
 
-if($_POST["reset-email"]) {
+    $selector = $_POST["selector"];
+    $validator = $_POST["validator"];
+    $pwd = $_POST["pwd"];
+    $pwdRepead = $_POST["pwd-repeat"];
 
-    $selector = bin2hex(random_bytes(8));
-    $token = random_bytes(32);
-
-    $url = "www.logowaniephp/plikiPhp/create-new-pwd.php?selector" . $selector . "&validator=" . bin2hex($token);
-    $expires = date("U") + 600;
-
-    require("dbSkp.php");
-
-    $useremial = $_POST["email"];
-
-    //Usinięcie tokena, jeśli jakiś aktywny by jeszcze istniał
-    $sql = "DELETE FROM pwdreset WHERE pwdResetEmail=?;";
-    $stmt = mysqli_stmt_init($conn);
-
-    if(!mysqli_stmt_prepare($stmt, $conn)) {
-        echo "Wystąpił bład";
+    if (empty($pwd) || empty($pwdRepead)) {
+        header("location: ../sihnin.php?newpwd=empty");
         exit();
-    }else {
-        mysqli_stmt_bind_param($stmt, "s", $useremial);
-        mysqli_stmt_execute($stmt);
+    } elseif ($pwd != $pwdRepead) {
+        header("location: ../sihnin.php?newpwd=pwdnotsame");
+        exit();
     }
 
-    //Utworzenie nowego tokena
-    $sql = "INSERT INTO pwdreset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?, ?, ?, ?);";
+    //Sprawdzenie tokenu, czy nie wygasł
+    $currentDate = date("U");
+
+    include "dbSkp.php";
+
+    $sql = "SELECT * FROM pwdreset WHERE pwdResetSelector=? AND pwdResetExpires >= $currentDate";
     $stmt = mysqli_stmt_init($conn);
 
-    if(!mysqli_stmt_prepare($stmt, $conn)) {
+    if (!mysqli_stmt_prepare($stmt, $conn)) {
         echo "Wystąpił błąd";
         exit();
-    }else {
-        $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssss", $useremial, $selector, $hashedToken, $expires);
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $selector);
         mysqli_stmt_execute($stmt);
     }
 
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+    $result = mysqli_stmt_get_result($stmt);
+    if (!$row = mysqli_fetch_assoc($result)) {
+        echo "Błąd";
+        exit();
+    } else {
 
-    //Wysyłanie maila z tokenem
+        $tokenBin = hex2bin($validator);
+        $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 
-    $to = $useremial;
-    $subject = 'Resetowanie hasła na stronie Logo';
-    $message = '<p>Jeśli to nie Ty zgłaszałeś chęć zmiany hasła - zignoruj tę wiadomość.</p></ br> <p>Aby ustawić nowe hasło do logowania w Pracuj.pl, kliknij w poniższy przycisk: </br>
-    <a href="' . $url . '"> ' . $url . '</a></p>';
+        if ($tokenCheck === false) {
+            echo "Wystąpił błąd";
+            exit();
+        } elseif ($tokenCheck === true) {
 
-    $headers = "From logo <logo@gmail.com>\r\n";
-    $headers .= "Reply-To: logo@gmail.com\r\n";
-    $headers .= "Content-type: text/html\r\n";
+            $tokenEmail = $row["pwdResetEmail"];
 
-    mail($useremial, $subject, $message, $headers);
-    header("location: ../resetpwd.php?reset=success");
+            $sql = "SELECT * FROM users WHERE usersEmail=?;";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "Wystąpił błąd";
+                exit();
+            } else {
+                mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                if (!$row = mysqli_fetch_assoc($result)) {
+                    echo "Błąd";
+                    exit();
+                } else {
+                    $sql = "UPDATE users SET usersPwd=? WHERE usersEmail=?;";
+                    $stmt = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($stmt, $sql)) {
+                        echo "Wystąpił błąd";
+                        exit();
+                    } else {
+                        $newPwdHash = password_hash($pwd, PASSWORD_DEFAULT );
+                        mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
+                        mysqli_stmt_execute($stmt);
 
-}else {
-    header("location: ../resetpwd.php");
+                        //usunięcie tokenu, tak by w bazie nie było żadnego nieużywanego tokenu
+                        $sql = "DELETE FROM pwdreset WHERE pwdResetEmail=?;";
+                        $stmt = mysqli_stmt_init($conn);
+                    
+                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                            echo "Wystąpił bład";
+                            exit();
+                        } else {
+                            mysqli_stmt_bind_param($stmt, "s", $useremial);
+                            mysqli_stmt_execute($stmt);
+                            header ("location: ../signup.php?newpwd=passwordupdated"); 
+                        }
+                    
+                    }
+                }
+            }
+        }
+    }
+} else {
+    header("location: ../index.php");
 }

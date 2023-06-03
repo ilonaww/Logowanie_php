@@ -18,21 +18,28 @@ include_once 'section/header.php';
                 <input class="signin__form__item btn btn-outline-primary" type="submit" name="submit" value="Zaloguj">
             </div>
         </form>
-    <div class="signin__link">
-    <a href="resetpwd.php">Niepamiętam hasła</a>
-    </div>
 
-      
         <?php
-if (isset($_GET["error"])) {
-    if ($_GET["error"] == "emptyinput") {
-        echo '<p class="text-danger text-center fs-3 text">Wypełnij wszystkie pola</p>';
+        if (isset($_GET["newpwd"])) {
+            if ($_GET["newpwd"] === "passwordupdated") {
+                echo '<p class="resetsuccess">Hasło zostało zmienione</p>';
+            };
+        };
+        ?>
+        <div class="signin__link">
+            <a href="resetpwd.php">Niepamiętam hasła</a>
+        </div>
 
-    } elseif ($_GET["error"] == "wronglogin") {
-        echo '<p class="text-danger text-center fs-3 text">Nieprawidłowy login lub hasło</p>';
-    }
-}
-?>
+
+        <?php
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "emptyinput") {
+                echo '<p class="text-danger text-center fs-3 text">Wypełnij wszystkie pola</p>';
+            } elseif ($_GET["error"] == "wronglogin") {
+                echo '<p class="text-danger text-center fs-3 text">Nieprawidłowy login lub hasło</p>';
+            }
+        }
+        ?>
     </section>
 </div>
 

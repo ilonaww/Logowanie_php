@@ -11,7 +11,7 @@ include_once 'section/header.php';
                 </h2>
             </div>
         </div>
-        <form method="post" action="plikiPhp/resetpwdSkp.php">
+        <form method="post" action="plikiPhp/resetrequestSkp.php">
             <div class="signup__form d-flex flex-column align-items-center">
                 <input type="text" name="email" class="form-control signin__form__item" placeholder="Twój adres e-mail">
                 <button type="submit" name="reset-email" class="btn btn-outline-primary signin__form__item">Przypomnij
@@ -27,8 +27,6 @@ include_once 'section/header.php';
         ?>
     </section>
 </div>
-
-
 
 <?php
 include_once 'section/footer.php';
